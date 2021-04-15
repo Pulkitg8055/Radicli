@@ -9,9 +9,13 @@ export default function Form({
 }) {
     function handleSubmit(e) {
         e.preventDefault();
-        if (input.title !== '' && input.description !== '')
-            setTodos((prev) => [...prev, { ...input }]);
-        else alert('Description required');
+
+        if (input.title === '') {
+            alert('Title required');
+        }
+        if (input.description === '' || input.description.length < 10)
+            alert('Proper Description required');
+        else setTodos((prev) => [...prev, { ...input }]);
 
         setInput({
             title: '',
@@ -20,7 +24,9 @@ export default function Form({
             status: 'Ongoing',
         });
     }
-
+    const required = (val) => val && val.length;
+    const maxLength = (len) => (val) => !val || val.length <= len;
+    const minLength = (len) => (val) => val && val.length >= len;
     return (
         <form onSubmit={handleSubmit} className={`${dark ? 'darke' : ''}`}>
             <div className='row-one'>
@@ -32,6 +38,7 @@ export default function Form({
                     placeholder='Title'
                     value={input.title}
                 />
+
                 <input
                     className='second-child'
                     onChange={handleChange}
