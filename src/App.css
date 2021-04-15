@@ -21,9 +21,11 @@
 .App {
     background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
     color: rgba(255, 255, 255, 0.9);
+
     font-family: 'Poppins', sans-serif;
-    height: 100%;
-    /* transition: all 1s ease; */
+    min-height: 100vh;
+    margin: 0 auto;
+    text-align: center;
 }
 
 header {

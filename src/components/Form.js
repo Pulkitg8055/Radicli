@@ -15,14 +15,16 @@ export default function Form({
         }
         if (input.description === '' || input.description.length < 10)
             alert('Proper Description required');
-        else setTodos((prev) => [...prev, { ...input }]);
+        else {
+            setTodos((prev) => [...prev, { ...input }]);
 
-        setInput({
-            title: '',
-            description: '',
-            dueDate: '2021-04-15',
-            status: 'Ongoing',
-        });
+            setInput({
+                title: '',
+                description: '',
+                dueDate: '2021-04-15',
+                status: 'Ongoing',
+            });
+        }
     }
     const required = (val) => val && val.length;
     const maxLength = (len) => (val) => !val || val.length <= len;
